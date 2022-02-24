@@ -31,8 +31,6 @@ public class NetflixZuulReverseProxyServiceImpl implements NetflixZuulReversePro
 		zuulProperties.getRoutes().put(uniqueId,
 				new ZuulRoute(uniqueId, sourceUrl, null, targetUrl, true, false, new HashSet<>()));
 		zuulHandlerMapping.setDirty(true);
-
-		LOGGER.debug("Proxy Mapping " + zuulProperties);
 	}
 
 }
