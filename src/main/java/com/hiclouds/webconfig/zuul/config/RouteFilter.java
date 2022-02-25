@@ -25,7 +25,9 @@ public class RouteFilter extends ZuulFilter {
 	public boolean shouldFilter() {
 		RequestContext ctx = RequestContext.getCurrentContext();
 		String requestURL = ctx.getRequest().getRequestURL().toString();
-		log.info("zuulFilter Request URL " + requestURL);
+		log.info("routeFilter: zuulFilter Request URL " + requestURL);
+
+		log.info("routeFilter: Redirecting to-->" + ctx.getRouteHost().toString());
 		return true;
 	}
 

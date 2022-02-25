@@ -40,7 +40,7 @@ public class ErrorFilter extends ZuulFilter {
 
 		if (throwable instanceof ZuulException) {
 			final ZuulException zuulException = (ZuulException) throwable;
-			log.info("Zuul failure detected: " + zuulException.getMessage());
+			log.info("ErrorFilter: Zuul failure detected: " + zuulException.getMessage());
 
 			// remove error code to prevent further error handling in follow up
 			// filters
