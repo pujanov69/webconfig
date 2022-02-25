@@ -25,7 +25,7 @@ public class RouteFilter extends ZuulFilter {
 	public boolean shouldFilter() {
 		RequestContext ctx = RequestContext.getCurrentContext();
 		String requestURL = ctx.getRequest().getRequestURL().toString();
-		log.debug("zuulFilter Request URL " + requestURL);
+		log.info("zuulFilter Request URL " + requestURL);
 		return true;
 	}
 
@@ -34,7 +34,7 @@ public class RouteFilter extends ZuulFilter {
 		RequestContext ctx = RequestContext.getCurrentContext();
 		HttpServletRequest request = ctx.getRequest();
 
-		log.debug("RouteFilter: "
+		log.info("RouteFilter: "
 				+ String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
 
 		return null;

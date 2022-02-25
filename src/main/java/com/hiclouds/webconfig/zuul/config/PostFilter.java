@@ -25,14 +25,14 @@ public class PostFilter extends ZuulFilter {
 	public boolean shouldFilter() {
 		RequestContext ctx = RequestContext.getCurrentContext();
 		String requestURL = ctx.getRequest().getRequestURL().toString();
-		log.debug("postFilter Request URL " + requestURL);
+		log.info("postFilter Request URL " + requestURL);
 		return true;
 	}
 
 	@Override
 	public Object run() {
 		HttpServletResponse response = RequestContext.getCurrentContext().getResponse();
-		log.debug("PostFilter: " + String.format("response is %s", response));
+		log.info("PostFilter: " + String.format("response is %s", response));
 		return null;
 	}
 }

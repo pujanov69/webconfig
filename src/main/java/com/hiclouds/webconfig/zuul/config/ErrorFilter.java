@@ -27,7 +27,7 @@ public class ErrorFilter extends ZuulFilter {
 	public boolean shouldFilter() {
 		RequestContext ctx = RequestContext.getCurrentContext();
 		String requestURL = ctx.getRequest().getRequestURL().toString();
-		log.debug("ErrorFilter Request URL " + requestURL);
+		log.info("ErrorFilter Request URL " + requestURL);
 		return true;
 	}
 
@@ -36,11 +36,11 @@ public class ErrorFilter extends ZuulFilter {
 		RequestContext ctx = RequestContext.getCurrentContext();
 		final Object throwable = ctx.get("throwable");
 
-		log.debug("Redirecting to zuul custom error page");
+		log.info("Redirecting to zuul custom error page");
 
 		if (throwable instanceof ZuulException) {
 			final ZuulException zuulException = (ZuulException) throwable;
-			log.error("Zuul failure detected: " + zuulException.getMessage());
+			log.info("Zuul failure detected: " + zuulException.getMessage());
 
 			// remove error code to prevent further error handling in follow up
 			// filters
@@ -54,7 +54,7 @@ public class ErrorFilter extends ZuulFilter {
 				}
 				ctx.getResponse().sendRedirect(url + "/zuul-proxy-error");
 			} catch (IOException e) {
-				log.error("Zuul Error Filter : Error while Zuul custom error page redirection " + e);
+				log.info("Zuul Error Filter : Error while Zuul custom error page redirection " + e);
 			}
 		}
 		return null;

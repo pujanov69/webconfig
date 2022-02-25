@@ -25,7 +25,7 @@ public class PreFilter extends ZuulFilter {
 	public boolean shouldFilter() {
 		RequestContext ctx = RequestContext.getCurrentContext();
 		String requestURL = ctx.getRequest().getRequestURL().toString();
-		log.debug("preFilter Request URL " + requestURL);
+		log.info("preFilter Request URL " + requestURL);
 		return true;
 	}
 
@@ -33,7 +33,7 @@ public class PreFilter extends ZuulFilter {
 	public Object run() {
 		RequestContext ctx = RequestContext.getCurrentContext();
 		HttpServletRequest request = ctx.getRequest();
-		log.debug("PreFilter: "
+		log.info("PreFilter: "
 				+ String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
 		return null;
 	}
